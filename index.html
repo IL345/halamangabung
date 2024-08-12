@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    color: red;
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Nama Pengguna:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Kata Sandi:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Masuk</button>
+            <p id="message"></p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Ambil nilai dari input
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Validasi input (contoh: username dan password harus tidak kosong)
+        if (username === '' || password === '') {
+            message.textContent = 'Semua field harus diisi!';
+            return;
+        }
+
+        // Logika login sederhana
+        if (username === 'admin' && password === 'password') {
+            message.textContent = 'Login berhasil!';
+            message.style.color = 'green';
+            // Arahkan ke halaman berikutnya jika login berhasil
+            // window.location.href = 'dashboard.html';
+        } else {
+            message.textContent = 'Nama pengguna atau kata sandi salah!';
+            message.style.color = 'red';
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
